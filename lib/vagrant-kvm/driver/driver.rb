@@ -33,7 +33,8 @@ module VagrantPlugins
           @logger = Log4r::Logger.new("vagrant::provider::kvm::driver")
           @uuid = uuid
           # This should be configurable
-          @pool_name = "vagrant"
+          user=ENV['USER']||""
+          @pool_name = "vagrant_#{user}"
           @network_name = "vagrant"
 
           @conn = Util::LibvirtHelper.connect
